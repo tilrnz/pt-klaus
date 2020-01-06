@@ -121,3 +121,10 @@ function clearChat(){
     pendingClear = 1;
     console.log("clearing chat");
 }
+
+document.getElementById("chatField").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        setPendingMessage();
+    }
+});

@@ -112,3 +112,10 @@ function uc(){
 }
 
 var intervalID = setInterval(uc, 1500);
+
+document.getElementById("chatField").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        setPendingMessage();
+    }
+});
