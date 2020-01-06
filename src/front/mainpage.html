@@ -90,6 +90,10 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 			left: 0px;
 			top: 23px;
 		}
+		#logout{
+			text-align: right;
+			margin-bottom: 10px;
+		}
 	</style>
 </head>
 <body>
@@ -151,6 +155,9 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 			</div>
 			<div class="col-1"></div>
 			<div class="col-4">
+				<div id="logout">
+					<button class="btn btn-secondary" onclick="window.location.href = 'login.html';">logout ◯</button>
+				</div>
 				<div class="p-2" id="chat">
 					<div id="chatMessages"></div>
 					<input id="chatInput" type="" name="">
@@ -239,9 +246,8 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
   			}else{
   				document.getElementById("redLine").style.display = "block";
   				var lineHeight = 23 + (h-10)*40 + m * 0.67;
+				document.getElementById("redLine").style.top = lineHeight.toString() + "px";
   			}
-
-  			document.getElementById("redLine").style.top = lineHeight.toString() + "px";
 		}
 
 		window.setInterval(function(){
@@ -299,6 +305,8 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 				document.getElementById("enqueueButton").innerHTML = dequeueT;
 				document.getElementById("leaveQueueInfo").innerHTML = info;
 				document.getElementById("queueInfo").innerHTML = persons + " " + personsLeft + "<br>" + timeLeft + " " + (persons * 5) + "min" ;
+				toChat();
+				
 			}else{
 				inqueue = false;
 				document.getElementById("enqueueButton").classList.remove("btn-secondary");
@@ -307,6 +315,14 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 				document.getElementById("leaveQueueInfo").innerHTML = "";
 				document.getElementById("queueInfo").innerHTML = "";
 			}
+		}
+		
+		function toChat(){
+			setTimeout(function(){
+				if(inqueue){
+					window.location.href = 'chat.html';
+				}
+			}, 5000);
 		}
 
 		function addMessage(sender, message){
