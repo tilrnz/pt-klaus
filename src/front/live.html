@@ -86,17 +86,24 @@
                             <input id="chatInput" type="" name="">
                             <div id="chatTitle">Chat</div>
                         </div>
-
-                        <button style="margin-top: 70px;">MUTE</button>
-                        <button>DEAFEN</button>
+                        <div>
+                        <button type="submit" class="btn btn-secondary" style="margin-top: 55px;">MUTE</button>
+                        <button type="submit" class="btn btn-secondary" style="margin-top: 55px;">DEAFEN</button>
+                        </div>
                     </div>
                 </div>
             </div>
             
         <script type="text/javascript">
-           
+            var inqueue = false;
             var userName = "Klaus";
-            
+            var enqueueT, dequeueT, info, personsLeft, timeLeft;
+            enqueueT = "In Warteschlange einreihen";
+            dequeueT = "In der Warteschlange...";
+            info = "Erneut klicken zum verlassen."
+            personsLeft = "verbleibend";
+            timeLeft = "ca.";
+            document.getElementById("enqueueButton").innerHTML = enqueueT;
             document.getElementById("chatInput").addEventListener("keyup", function (event) {
                 if (event.keyCode === 13) {
                     event.preventDefault();
@@ -109,6 +116,25 @@
                 element.innerHTML = "<span class='chatName'> " + sender + " </span>: <span class='chatMsg'>" + message + "</span>";
                 document.getElementById("chatMessages").append(element);
             }
+            function enqueue() {
+                if (!inqueue) {
+                    inqueue = true;
+                    document.getElementById("enqueueButton").classList.remove("btn-primary");
+                    document.getElementById("enqueueButton").classList.add("btn-secondary");
+                    document.getElementById("enqueueButton").innerHTML = dequeueT;
+                    document.getElementById("leaveQueueInfo").innerHTML = info;
+                    document.getElementById("queueInfo").innerHTML = persons + " " + personsLeft + "<br>" + timeLeft + " " + (persons * 5) + "min";
+                } else {
+                    inqueue = false;
+                    document.getElementById("enqueueButton").classList.remove("btn-secondary");
+                    document.getElementById("enqueueButton").classList.add("btn-primary");
+                    document.getElementById("enqueueButton").innerHTML = enqueueT;
+                    document.getElementById("leaveQueueInfo").innerHTML = "";
+                    document.getElementById("queueInfo").innerHTML = "";
+                }
+            }
+
+
         </script>
             
     
