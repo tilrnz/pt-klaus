@@ -96,21 +96,22 @@
             </div>
             
         <script type="text/javascript">
-           
             var userName = "Klaus";
-            
             document.getElementById("chatInput").addEventListener("keyup", function (event) {
-                if (event.keyCode === 13) {
-                    event.preventDefault();
-                    addMessage(userName, document.getElementById("chatInput").value);
-                    document.getElementById("chatInput").value = "";
+                    if (event.keyCode === 13) {
+                        event.preventDefault();
+                        addMessage(userName, document.getElementById("chatInput").value);
+                        document.getElementById("chatInput").value = "";
+                    }
+                });
+                function addMessage(sender, message) {
+                    var element = document.createElement("div");
+                    element.innerHTML = "<span class='chatName'> " + sender + " </span>: <span class='chatMsg'>" + message + "</span>";
+                    document.getElementById("chatMessages").append(element);
                 }
-            });
-            function addMessage(sender, message) {
-                var element = document.createElement("div");
-                element.innerHTML = "<span class='chatName'> " + sender + " </span>: <span class='chatMsg'>" + message + "</span>";
-                document.getElementById("chatMessages").append(element);
-            }
+            
+
+
         </script>
             
     
