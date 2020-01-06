@@ -2,12 +2,147 @@
 <html>
 <!--Has FAQ and Chat window.-->
 <head>
-	<title>Tutor-Hilfs-Chat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Tutor-Hilfs-Chat</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    
 </head>
+<style type="text/css">
+body{
+background-color: #e9ddb3;
+}
+#chat{
+height: 300px;
+border: 1px solid gray;
+padding: 0!important;
+background-color: white;
+}
+#chatMessages{
+height: 235px;
+padding: 2px;
+box-sizing: border-box;
+}
+#chatInput{
+width: 100%;
+height: 25px;
+}
+#chatTitle{
+font-weight: bold;
+font-size: x-large;
+text-align: center;
+}
+.chatName{
+color: #008fdb;
+}
+.chatMsg{
+
+}
+</style>
 <body>
+
+        
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <button type="submit" class="btn btn-primary" onclick="window.location.href = 'mainpage.html';"
+                    style="margin-left: 5%;">◁ back</button>
+
+            </div>
+            <div class="col-sm">
+                <button type="submit" class="btn btn-secondary" onclick="window.location.href = 'login.html';"
+                    style="float: right; ">logout ◯</button>
+            </div>
+        </div>
+    </div>
+   
+    
+    <div class="container" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-sm">
+                <h style="font-weight: bold; font-size: larger;">FAQ</h>
+                <div
+                    style="background-color: white; overflow-y: scroll; height: 400px; border:1px; border-style:solid; border-color:grey; padding: 1%;">
+                    <p style=" font-weight: bold;">Was bedeutet System.out.printf in Java?</p>
+                    <p style=" font-style: italic;">Es handelt sich um die Ausgabe von formatiertem Text auf der Konsole</p>
+                    <p style=" font-weight: bold;">Wie implementiert man eine For-Schleife in Java?</p>
+                    <p style=" font-style: italic;">Mit drei Parametern in Klammern: for (int i = 0; i < j; i++). i ist hierbei die Variable, die hochgezählt (und am Anfang auf 0 gesetzt) wird bis j erreicht wird. i++ gibt an, dass in Einerschritten hochgezählt wird, kann aber beliebig variiert werden.</p>
+                    <p style=" font-weight: bold;">Was sind andere Fragen, die in ein FAQ noch rein könnten?</p>
+                    <p style=" font-style: italic;">Da ich unkreativ bin und mir relativ wenig sinnvolle Fragen inklusive Antworten noch einfallen (ich außerdem eigentlich auch besseres zu tun habe), ich aber schon zeigen möchte, dass dieses Fenster hier scrollbar ist, schreibe ich jetzt einfach einen Text mit doch ganz schön vielen Zeichen, sodass irgendwann endlich mal das untere Ende dieser Box erreicht wird und somit tatsächlich klar wird: Diese Box ist scrollbar, wenn der Text darin mehr wird, als tatsächlich in die Box hereinpasst.</p>
+
+                </div>
+            </div>
+            <div class="col-sm" style="width: 100%;">
+                <!--<div
+                    style="float: right;margin-top: 29px;width: 70%; height: 200px; border:1px; border-style:solid; border-color:grey;">
+                    Chat
+                
+                
+                    <input style="vertical-align:bottom; width: 98%; margin: 1%;" type="text" name="Message" placeholder="Message...">
+                
+                
+                </div> -->
+                <div class="p-2" id="chat">
+                    <div id="chatMessages"></div>
+                    <input id="chatInput" type="" name="">
+                    <div id="chatTitle">Chat</div>
+                </div>
+                <div style="align-self: center; margin-top: 55px; margin-left: 50%;">
+                    <button id="enqueueButton" type="btn btn-primary" class="btn btn-primary btn-lg" onclick="enqueue()"></button>
+                    <p id="leaveQueueInfo"></p>
+                    <p id="queueInfo"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var inqueue = false;
+        var userName = "Klaus";
+        var enqueueT, dequeueT, info, personsLeft, timeLeft;
+            enqueueT = "In Warteschlange einreihen";
+            dequeueT = "In der Warteschlange...";
+            info = "Erneut klicken zum verlassen."
+            personsLeft = "verbleibend";
+            timeLeft = "ca.";
+        document.getElementById("enqueueButton").innerHTML = enqueueT;
+        document.getElementById("chatInput").addEventListener("keyup", function (event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    addMessage(userName, document.getElementById("chatInput").value);
+                    document.getElementById("chatInput").value = "";
+                }
+            });
+        function addMessage(sender, message) {
+                var element = document.createElement("div");
+                element.innerHTML = "<span class='chatName'> " + sender + " </span>: <span class='chatMsg'>" + message + "</span>";
+                document.getElementById("chatMessages").append(element);
+        }
+        function enqueue() {
+                if (!inqueue) {
+                    inqueue = true;
+                    document.getElementById("enqueueButton").classList.remove("btn-primary");
+                    document.getElementById("enqueueButton").classList.add("btn-secondary");
+                    document.getElementById("enqueueButton").innerHTML = dequeueT;
+                    document.getElementById("leaveQueueInfo").innerHTML = info;
+                    document.getElementById("queueInfo").innerHTML = persons + " " + personsLeft + "<br>" + timeLeft + " " + (persons * 5) + "min";
+                } else {
+                    inqueue = false;
+                    document.getElementById("enqueueButton").classList.remove("btn-secondary");
+                    document.getElementById("enqueueButton").classList.add("btn-primary");
+                    document.getElementById("enqueueButton").innerHTML = enqueueT;
+                    document.getElementById("leaveQueueInfo").innerHTML = "";
+                    document.getElementById("queueInfo").innerHTML = "";
+                }
+        }
     
     
-    <button onclick="window.location.href = 'mainpage.html';">back</button>
+    </script>
+    
+    
+        
+
+        
+        
+        
 </body>
 </html>
