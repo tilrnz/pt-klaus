@@ -238,7 +238,7 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 				document.getElementById("redLine").style.display = "none";
   			}else{
   				document.getElementById("redLine").style.display = "block";
-  				var lineHeight = 24 + (h-10)*40 + m * 0.7;
+  				var lineHeight = 23 + (h-10)*40 + m * 0.67;
   			}
 
   			document.getElementById("redLine").style.top = lineHeight.toString() + "px";
@@ -273,7 +273,7 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 
 			var time = 0.667 * duration;
 			item.style.height = time.toString() + "px";
-			var height = 24 + (startHour-10)*40 + startMinute * 0.7;
+			var height = 24 + (startHour-10)*40 + startMinute * 0.67;
 			item.style.top = height.toString() + "px";
 			item.style.width = "100%";
 			item.style.backgroundColor = "blue";
