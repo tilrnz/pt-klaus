@@ -5,10 +5,285 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 <head>
 	<title>Tutor-Hilfs-Chat</title>
     <meta charset="UTF-8">
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			background-color: #e9ddb3;
+		}
+		#timetable{
+			border: 1px solid gray;
+			border-radius: 5px;
+			padding: 5px 20px 5px 20px;
+			background-color: #ffe26d;
+		}
+		.timeline{
+			margin: 5px;
+		}
+		.dayslot{
+			font-weight: bold;
+			justify-content: center;
+		}
+		.timeslot{
+			height: 40px;
+			border-top: 1px solid gray;
+			border-left: 1px solid gray;
+			border-right: 1px solid gray;
+			background-color: white;
+		}
+		.timeslot-last{
+			border-bottom: 1px solid gray;
+		}
+		#chat{
+			height: 300px;
+			border: 1px solid gray;
+			padding: 0!important;
+			background-color: white;
+		}
+		#chatMessages{
+			height: 235px;
+			padding: 2px;
+			box-sizing: border-box;
+		}
+		#chatInput{
+			width: 100%;
+			height: 25px;
+		}
+		#chatTitle{
+			font-weight: bold;
+			font-size: x-large;
+			text-align: center;
+		}
+		.chatName{
+			color: #008fdb;
+		}
+		.chatMsg{
+
+		}
+		#page-bottom{
+			margin-top: 40px;
+		}
+		#page-bottomRight{
+			text-align: center;
+		}
+		#faqLink{
+			float: right;
+		}
+		#languages{
+			float: left;
+			border: 1px solid gray;
+		}
+		.languageEntry{
+			padding: 0!important;
+		}
+		.languageEntry:hover{
+			cursor: pointer;
+		}
+		.container{
+			margin-top: 50px;
+		}
+		#redLine{
+			height: 2px;
+			width: 100%;
+			position: absolute;
+			background-color: red;
+			left: 0px;
+			top: 23px;
+		}
+	</style>
 </head>
 <body>
-    
-    
-    <button onclick="window.location.href = 'faq.html';">FAQ</button>
+    <div class="container">
+    	<div class="row">
+			<div class="col-7" id="timetable">
+				<div class="row">
+					<div class="col timeline" id="montag">
+						<div class="row dayslot">Montag</div>
+						<div class="row timeslot">10:00</div>
+						<div class="row timeslot">11:00</div>
+						<div class="row timeslot">12:00</div>
+						<div class="row timeslot">13:00</div>
+						<div class="row timeslot">14:00</div>
+						<div class="row timeslot">15:00</div>
+						<div class="row timeslot timeslot-last">16:00</div>
+					</div>
+					<div class="col timeline" id="dienstag">
+						<div class="row dayslot">Dienstag</div>
+						<div class="row timeslot">10:00</div>
+						<div class="row timeslot">11:00</div>
+						<div class="row timeslot">12:00</div>
+						<div class="row timeslot">13:00</div>
+						<div class="row timeslot">14:00</div>
+						<div class="row timeslot">15:00</div>
+						<div class="row timeslot timeslot-last">16:00</div>
+					</div>
+					<div class="col timeline" id="mittwoch">
+						<div class="row dayslot">Mittwoch</div>
+						<div class="row timeslot">10:00</div>
+						<div class="row timeslot">11:00</div>
+						<div class="row timeslot">12:00</div>
+						<div class="row timeslot">13:00</div>
+						<div class="row timeslot">14:00</div>
+						<div class="row timeslot">15:00</div>
+						<div class="row timeslot timeslot-last">16:00</div>
+					</div>
+					<div class="col timeline" id="donnerstag">
+						<div class="row dayslot">Donnerstag</div>
+						<div class="row timeslot">10:00</div>
+						<div class="row timeslot">11:00</div>
+						<div class="row timeslot">12:00</div>
+						<div class="row timeslot">13:00</div>
+						<div class="row timeslot">14:00</div>
+						<div class="row timeslot">15:00</div>
+						<div class="row timeslot timeslot-last">16:00</div>
+					</div>
+					<div class="col timeline" id="freitag">
+						<div class="row dayslot">Freitag</div>
+						<div class="row timeslot">10:00</div>
+						<div class="row timeslot">11:00</div>
+						<div class="row timeslot">12:00</div>
+						<div class="row timeslot">13:00</div>
+						<div class="row timeslot">14:00</div>
+						<div class="row timeslot">15:00</div>
+						<div class="row timeslot timeslot-last">16:00</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1"></div>
+			<div class="col-4">
+				<div class="p-2" id="chat">
+					<div id="chatMessages"></div>
+					<input id="chatInput" type="" name="">
+					<div id="chatTitle">Chat</div>
+				</div>
+	    	</div>
+		</div>
+		<div id="page-bottom" class="row">
+			<div class="col-7">
+				<button id="faqLink" type="button" class="btn btn-info" onclick="window.location.href = 'faq.html';">FAQ</button>
+				<div class="row" id="languages">
+					<div class="col languageEntry" id="l_ger" onclick="setGer();" class="languageEntry"><img height="50px" src="./resc/germanflag.png"></div>
+					<div class="col languageEntry" id="l_eng" onclick="setEng();" class="languageEntry"><img height="50px" src="./resc/britishflag.png"></div>
+				</div>
+			</div>
+			<div class="col-1"></div>
+			<div class="col-4" id="page-bottomRight">
+				<button id="enqueueButton" type="button" class="btn btn-primary btn-lg" onclick="enqueue()"></button>
+				<p id="leaveQueueInfo"></p>
+				<p id="queueInfo"></p>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var inqueue = false;
+		var userName = "User Name";
+		var persons = 1;
+		var enqueueT, dequeueT, info, personsLeft, timeLeft;
+		enqueueT = "In Warteschlange einreihen";
+		dequeueT = "In der Warteschlange...";
+		info = "Erneut klicken zum verlassen."
+		personsLeft = "verbleibend";
+		timeLeft = "ca.";
+		document.getElementById("enqueueButton").innerHTML = enqueueT;
+
+		document.getElementById("chatInput").addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				addMessage(userName, document.getElementById("chatInput").value);
+				document.getElementById("chatInput").value = "";
+			}
+		});
+
+		var line = document.createElement("div");
+		line.id = "redLine";
+		document.getElementById("freitag").append(line);
+		setLine();
+
+		function setLine(){
+			var x = document.getElementById("redLine");
+			var d = new Date();
+  			var n = d.getDay();
+  			var h = d.getHours();
+  			var m = d.getMinutes();
+
+  			switch(n){
+  				case 1:
+  					document.getElementById("redLine").style.display = "block";
+  					document.getElementById("montag").append(x);
+  					break;
+  				case 2:
+  					document.getElementById("redLine").style.display = "block";
+  					document.getElementById("dienstag").append(x);
+  					break;
+  				case 3:
+  					document.getElementById("redLine").style.display = "block";
+  					document.getElementById("mittwoch").append(x);
+  					break;
+  				case 4:
+  					document.getElementById("redLine").style.display = "block";
+  					document.getElementById("donnerstag").append(x);
+  					break;
+  				case 5:
+  					document.getElementById("redLine").style.display = "block";
+  					document.getElementById("freitag").append(x);
+  					break;
+  				default:
+  					document.getElementById("redLine").style.display = "none";
+  					return;
+  					break;
+  			}
+  			
+  			if(h >= 17 || h < 10){
+				document.getElementById("redLine").style.display = "none";
+  			}else{
+  				document.getElementById("redLine").style.display = "block";
+  				var lineHeight = 23 + (h-10)*40 + m * 0.6667;
+  			}
+
+  			document.getElementById("redLine").style.top = lineHeight.toString() + "px";
+		}
+
+		window.setInterval(function(){
+		  	setLine();
+		}, 30000);
+		
+		function enqueue(){
+			if(!inqueue){
+				inqueue = true;
+				document.getElementById("enqueueButton").classList.remove("btn-primary");
+				document.getElementById("enqueueButton").classList.add("btn-secondary");
+				document.getElementById("enqueueButton").innerHTML = dequeueT;
+				document.getElementById("leaveQueueInfo").innerHTML = info;
+				document.getElementById("queueInfo").innerHTML = persons + " " + personsLeft + "<br>" + timeLeft + " " + (persons * 5) + "min" ;
+			}else{
+				inqueue = false;
+				document.getElementById("enqueueButton").classList.remove("btn-secondary");
+				document.getElementById("enqueueButton").classList.add("btn-primary");
+				document.getElementById("enqueueButton").innerHTML = enqueueT;
+				document.getElementById("leaveQueueInfo").innerHTML = "";
+				document.getElementById("queueInfo").innerHTML = "";
+			}
+		}
+
+		function addMessage(sender, message){
+			var element = document.createElement("div");
+			element.innerHTML = "<span class='chatName'> " + sender + " </span>: <span class='chatMsg'>" + message + "</span>";
+			document.getElementById("chatMessages").append(element);
+		}
+
+		function setGer(){
+			
+		}
+
+		function setEng(){
+			
+		}
+	</script>
+
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
