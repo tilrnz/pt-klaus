@@ -7,15 +7,16 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="../style/chat.css">
     <title>Chat window</title>
   </head>
   <body>
-    <div id="chatFrame", class="list-group">
-        
+    <!--The area where the messages appear.-->
+    <div id="chatFrame", class="bg-light list-group">
     </div>
-    <div  class="input-group mb-3">
-        <input id="chatField", type="text" class="form-control" placeholder="Type here..." aria-label="Recipient's username" aria-describedby="button-addon2">
+    <!--The input field-->
+    <div  class="inputField input-group mb-3">
+        <input id="chatField", type="text" class="form-control" placeholder="Type here...">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button" id="bttSend" onclick="setPendingMessage()">Send</button>
         </div>

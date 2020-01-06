@@ -105,7 +105,7 @@ function appendChatMsg(response){
     var chatHist;
     
     var messages=response.value;
-    messages.push({sdr:"Your Name", msg:  nxtmsg  })
+    messages.push({sdr: document.getElementById("unameField").value, msg:  nxtmsg  })
     put(response, {"value": messages} );
     console.log(messages);
 }
