@@ -238,7 +238,7 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 				document.getElementById("redLine").style.display = "none";
   			}else{
   				document.getElementById("redLine").style.display = "block";
-  				var lineHeight = 23 + (h-10)*40 + m * 0.6667;
+  				var lineHeight = 24 + (h-10)*40 + m * 0.7;
   			}
 
   			document.getElementById("redLine").style.top = lineHeight.toString() + "px";
@@ -247,6 +247,49 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 		window.setInterval(function(){
 		  	setLine();
 		}, 30000);
+		
+		function addLesson(day, startHour, startMinute, duration){
+			var item = document.createElement("div");
+			switch(day){
+  				case "montag":
+  					document.getElementById("montag").append(item);
+  					break;
+  				case "dienstag":
+  					document.getElementById("dienstag").append(item);
+  					break;
+  				case "mittwoch":
+  					document.getElementById("mittwoch").append(item);
+  					break;
+  				case "donnerstag":
+  					document.getElementById("donnerstag").append(item);
+  					break;
+  				case "freitag":
+  					document.getElementById("freitag").append(item);
+  					break;
+  				default:
+  					return;
+  					break;
+  			}
+
+			var time = 0.667 * duration;
+			item.style.height = time.toString() + "px";
+			var height = 24 + (startHour-10)*40 + startMinute * 0.7;
+			item.style.top = height.toString() + "px";
+			item.style.width = "100%";
+			item.style.backgroundColor = "blue";
+			item.style.position = "absolute";
+			item.style.left = "0px";
+			item.style.opacity = "0.5";
+		}
+
+		//Beispiel lessons
+		addLesson("montag", 11, 0, 60);
+		addLesson("dienstag", 12, 0, 60);
+		addLesson("mittwoch", 11, 0, 90);
+		addLesson("donnerstag", 13, 0, 45);
+		addLesson("freitag", 13, 0, 90);
+		addLesson("mittwoch", 15, 0, 60);
+		addLesson("freitag", 10, 0, 60);
 		
 		function enqueue(){
 			if(!inqueue){
