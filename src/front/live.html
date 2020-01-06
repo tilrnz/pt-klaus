@@ -87,8 +87,10 @@
                             <div id="chatTitle">Chat</div>
                         </div>
 
-                        <button style="margin-top: 70px;">MUTE</button>
-                        <button>DEAFEN</button>
+                        <button id="muteBtt" style="margin-top: 70px;" value='MUTE' onclick="document.getElementById('muteBtt').innerHTML = 
+                        (document.getElementById('muteBtt').innerHTML == 'MUTE' ? 'UNMUTE' : 'MUTE');">MUTE</button>
+                        <button id="deafBtt" style="margin-top: 70px;" value='DEAF' onclick="document.getElementById('deafBtt').innerHTML = 
+                        (document.getElementById('deafBtt').innerHTML == 'DEAFEN' ? 'UNDEAFEN' : 'DEAFEN');">DEAFEN</button>
                     </div>
                 </div>
             </div>
