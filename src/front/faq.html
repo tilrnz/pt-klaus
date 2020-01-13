@@ -35,9 +35,7 @@ text-align: center;
 .chatName{
 color: #008fdb;
 }
-.chatMsg{
 
-}
 </style>
 <body>
 
@@ -126,6 +124,7 @@ color: #008fdb;
                     document.getElementById("enqueueButton").innerHTML = dequeueT;
                     document.getElementById("leaveQueueInfo").innerHTML = info;
                     document.getElementById("queueInfo").innerHTML = persons + " " + personsLeft + "<br>" + timeLeft + " " + (persons * 5) + "min";
+                    toChat();
                 } else {
                     inqueue = false;
                     document.getElementById("enqueueButton").classList.remove("btn-secondary");
@@ -136,6 +135,13 @@ color: #008fdb;
                 }
         }
     
+        function toChat(){
+			setTimeout(function(){
+				if(inqueue){
+					window.location.href = 'live.html';
+				}
+			}, 5000);
+		}
     
     </script>
     
