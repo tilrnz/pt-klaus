@@ -46,12 +46,12 @@ color: #008fdb;
         <div class="row">
             <div class="col-sm">
                 <button type="submit" class="btn btn-primary" onclick="window.location.href = 'mainpage.html';"
-                    style="margin-left: 5%;">◁ back</button>
+                    style="margin-left: 5%;">◁ Zurück</button>
 
             </div>
             <div class="col-sm">
                 <button type="submit" class="btn btn-secondary" onclick="window.location.href = 'login.html';"
-                    style="float: right; ">logout ◯</button>
+                    style="float: right; ">Abmelden ◯</button>
             </div>
         </div>
     </div>
@@ -87,7 +87,7 @@ color: #008fdb;
                     <input id="chatInput" type="" name="">
                     <div id="chatTitle">Chat</div>
                 </div>
-                <div style="align-self: center; margin-top: 55px; margin-left: 50%;">
+                <div style="align-self: center; margin-top: 55px; margin-left: 45%; text-align: center;">
                     <button id="enqueueButton" type="btn btn-primary" class="btn btn-primary btn-lg" onclick="enqueue()"></button>
                     <p id="leaveQueueInfo"></p>
                     <p id="queueInfo"></p>
@@ -96,6 +96,7 @@ color: #008fdb;
         </div>
     </div>
     <script type="text/javascript">
+		var persons = 1;
         var inqueue = false;
         var userName = "Klaus";
         var enqueueT, dequeueT, info, personsLeft, timeLeft;
