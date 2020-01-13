@@ -43,6 +43,19 @@
     }
 
     .chatMsg {}
+	
+	.mutedeafbtn{
+		height: 50px;
+		width: 50px;
+		background-color: white;
+		border: 1px solid black;
+		border-radius: 5px;
+	}
+	
+	.mutedeafbtn:hover{
+		background-color: lightgray;
+		cursor: pointer;
+	}
 </style>
 <body><!--
     <div style='float: left; width: 70%'>
@@ -86,16 +99,35 @@
                             <input id="chatInput" type="" name="">
                             <div id="chatTitle">Chat</div>
                         </div>
-
-                        <button id="muteBtt" style="margin-top: 70px;" value='MUTE' onclick="document.getElementById('muteBtt').innerHTML = 
-                        (document.getElementById('muteBtt').innerHTML == 'MUTE' ? 'UNMUTE' : 'MUTE');">MUTE</button>
-                        <button id="deafBtt" style="margin-top: 70px;" value='DEAF' onclick="document.getElementById('deafBtt').innerHTML = 
-                        (document.getElementById('deafBtt').innerHTML == 'DEAFEN' ? 'UNDEAFEN' : 'DEAFEN');">DEAFEN</button>
+						
+						<img id="muteBtt" align="middle" class="mutedeafbtn" src="./resc/micoff.png" style="margin-top: 70px;" onclick="changeMute()"/>
+                        <img id="deafBtt" align="middle" src="./resc/deaf.png" class="mutedeafbtn" style="margin-top: 70px;" onclick="changeMic()"/>
                     </div>
                 </div>
             </div>
             
         <script type="text/javascript">
+			var mute = true, mic = true;
+			function changeMute(){
+				if(mute){
+					document.getElementById("muteBtt").src = "./resc/micon.png";
+					mute = false;
+				}else{
+					document.getElementById("muteBtt").src = "./resc/micoff.png";
+					mute = true;
+				}
+			}
+		
+			function changeMic(){
+				if(mic){
+					document.getElementById("deafBtt").src = "./resc/undeaf.png";
+					mic = false;
+				}else{
+					document.getElementById("deafBtt").src = "./resc/deaf.png";
+					mic = true;
+				}
+			}
+		
             var userName = "Klaus";
             document.getElementById("chatInput").addEventListener("keyup", function (event) {
                     if (event.keyCode === 13) {
