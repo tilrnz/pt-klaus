@@ -102,7 +102,7 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 			<div class="col-7" id="timetable">
 				<div class="row">
 					<div class="col timeline" id="montag">
-						<div class="row dayslot">Montag</div>
+						<div class="row dayslot" id="day0">Montag</div>
 						<div class="row timeslot">10:00</div>
 						<div class="row timeslot">11:00</div>
 						<div class="row timeslot">12:00</div>
@@ -112,7 +112,7 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 						<div class="row timeslot timeslot-last">16:00</div>
 					</div>
 					<div class="col timeline" id="dienstag">
-						<div class="row dayslot">Dienstag</div>
+						<div class="row dayslot" id="day1">Dienstag</div>
 						<div class="row timeslot">10:00</div>
 						<div class="row timeslot">11:00</div>
 						<div class="row timeslot">12:00</div>
@@ -122,7 +122,7 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 						<div class="row timeslot timeslot-last">16:00</div>
 					</div>
 					<div class="col timeline" id="mittwoch">
-						<div class="row dayslot">Mittwoch</div>
+						<div class="row dayslot" id="day2">Mittwoch</div>
 						<div class="row timeslot">10:00</div>
 						<div class="row timeslot">11:00</div>
 						<div class="row timeslot">12:00</div>
@@ -132,7 +132,7 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 						<div class="row timeslot timeslot-last">16:00</div>
 					</div>
 					<div class="col timeline" id="donnerstag">
-						<div class="row dayslot">Donnerstag</div>
+						<div class="row dayslot" id="day3">Donnerstag</div>
 						<div class="row timeslot">10:00</div>
 						<div class="row timeslot">11:00</div>
 						<div class="row timeslot">12:00</div>
@@ -142,7 +142,7 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 						<div class="row timeslot timeslot-last">16:00</div>
 					</div>
 					<div class="col timeline" id="freitag">
-						<div class="row dayslot">Freitag</div>
+						<div class="row dayslot" id="day4">Freitag</div>
 						<div class="row timeslot">10:00</div>
 						<div class="row timeslot">11:00</div>
 						<div class="row timeslot">12:00</div>
@@ -156,7 +156,7 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 			<div class="col-1"></div>
 			<div class="col-4">
 				<div id="logout">
-					<button class="btn btn-secondary" onclick="window.location.href = 'login.html';">abmelden ◯</button>
+					<button class="btn btn-secondary" id="logout_btn" onclick="window.location.href = 'login.html';">abmelden ◯</button>
 				</div>
 				<div class="p-2" id="chat">
 					<div id="chatMessages"></div>
@@ -183,17 +183,39 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 	</div>
 
 	<script type="text/javascript">
+		var lang = "GER";
+		
 		var inqueue = false;
 		var userName = "User Name";
 		var persons = 1;
 		var enqueueT, dequeueT, info, personsLeft, timeLeft;
-		enqueueT = "In Warteschlange einreihen";
-		dequeueT = "In der Warteschlange...";
-		info = "Erneut klicken zum verlassen."
-		personsLeft = "verbleibend";
-		timeLeft = "ca.";
-		document.getElementById("enqueueButton").innerHTML = enqueueT;
+		function queue_lang(language) {
+			if(language == "GER")
+			{
+				enqueueT = "In Warteschlange einreihen";
+				dequeueT = "In der Warteschlange...";
+				info = "Erneut klicken zum verlassen."
+				personsLeft = "verbleibend";
+				timeLeft = "ca.";
 
+				document.getElementById("enqueueButton").innerHTML = enqueueT;
+			} else {
+				enqueueT = "Enqueue for Tutor";
+				dequeueT = "In queue...";
+				info = "Click again to leave."
+				personsLeft = "remaining";
+				timeLeft = "approx.";
+
+				document.getElementById("enqueueButton").innerHTML = enqueueT;
+			}
+		}
+		queue_lang(lang);
+	
+
+
+		/**
+		*	chat message
+		*/
 		document.getElementById("chatInput").addEventListener("keyup", function(event) {
 			if (event.keyCode === 13) {
 				event.preventDefault();
@@ -330,13 +352,36 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 			element.innerHTML = "<span class='chatName'> " + sender + " </span>: <span class='chatMsg'>" + message + "</span>";
 			document.getElementById("chatMessages").append(element);
 		}
+		// --------- language settings
+		var logout_GER = "abmelden ◯";
+		var logout_ENG = "logout ◯";
 
-		function setGer(){
-			
+		var days_GER = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag"];
+		var days_ENG = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+		
+		function setGer() {
+			lang = "GER";
+			queue_lang(lang);
+
+			document.getElementById("logout_btn").textContent=logout_GER;
+
+			for(i = 0; i < 5; i++) {
+				var day = "day" + i;
+				document.getElementById(day).textContent = days_GER[i];
+			}
 		}
 
-		function setEng(){
+		function setEng() {
+			lang = "ENG";
+			queue_lang(lang);
+
+			document.getElementById("logout_btn").textContent=logout_ENG;
 			
+			for(i = 0; i < 5; i++) {
+				var day = "day" + i;
+				document.getElementById(day).textContent = days_ENG[i];
+
+			}
 		}
 	</script>
 
