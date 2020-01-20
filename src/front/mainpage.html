@@ -164,7 +164,7 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 				<div class="p-2" id="chat">
 					<div id="chatMessages"></div>
 					<input id="chatInput" type="" name="">
-					<div id="chatTitle">Chat</div>
+					<div id="chatTitle">Globaler Chat</div>
 				</div>
 	    	</div>
 		</div>
@@ -183,7 +183,7 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 				<p id="queueInfo"></p>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" id="contactLink">
 			<p>
 				Falls du Probleme hast kontaktiere uns <a href="./contact.html" id="contactLink">hier</a>.
 			</p>
@@ -377,6 +377,11 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 				var day = "day" + i;
 				document.getElementById(day).textContent = days_GER[i];
 			}
+			
+			document.getElementById("contactLink").innerHTML =
+			"<p>Falls du Probleme hast kontaktiere uns <a href='./contact.html' id='contactLink'>hier</a>.</p>";
+			
+			document.getElementById("chatTitle").innerHTML = "Globaler Chat";
 		}
 
 		function setEng() {
@@ -390,6 +395,11 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 				document.getElementById(day).textContent = days_ENG[i];
 
 			}
+			
+			document.getElementById("contactLink").innerHTML =
+				"<p>If there is a problem with the site, you can reach us <a href='./contact.html' id='contactLink'>here</a>.</p>";
+			
+			document.getElementById("chatTitle").innerHTML = "Global Chat";
 		}
 	</script>
 
