@@ -23,37 +23,37 @@
 	</style>
 	<body>
 		<div class="container" id="contactWrapper">
-			<center><h1>Contact</h1></center>
+			<center><h1>Kontakt</h1></center>
 			<form onsubmit="event.preventDefault(); submitForm()">
 				<div class="form-group">
 					<label>Problem: </label>
 					<select class="form-control">
-						<option selected="selected">Connection</option>
-						<option>Function</option>
+						<option selected="selected">Verbindung</option>
+						<option>Funktionen</option>
 						<option>Design</option>
 						<option>FAQ</option>
-						<option>Other</option>
+						<option>Nicht gelistet</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label>Description of the problem: </label>
-					<textarea class="form-control" rows="5" placeholder="Describe your problem"></textarea>
+					<label>Beschreibung des Problems </label>
+					<textarea class="form-control" rows="5" placeholder="Beschreibe dein Problem"></textarea>
 				</div>
 				<div class="form-group">
-					<label for="exampleFormControlFile1">Add an image which might help to solving the problem: </label>
+					<label for="exampleFormControlFile1">Füge ein Bild hinzu, welches beim lösen des Problems hilfreich sein kann: </label>
 					<input type="file" class="form-control-file uploadForm">
 				</div>
 				<div class="form-group">
-					<label>Contact mail: </label>
-					<input type="text" class="form-control" placeholder="E-Mail adress">
+					<label>Kontakt E-Mail: </label>
+					<input type="text" class="form-control" placeholder="E-Mail Adresse">
 				</div>
-				<center><button type="submit" class="btn btn-primary">Send</button></center>
+				<center><button type="submit" class="btn btn-primary">Senden</button></center>
 			</form>
 		</div>
 	</body>
 	<script type="text/javascript">
 		function submitForm() {
-			alert("Form submitted.");
+			alert("Erfolgreich abgeschickt.");
 			window.location.href = './mainpage.html';
 		}
 	</script>
