@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<!--The start page the user sees after login. 
+Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
+<head>
+	<title>Tutor-Hilfs-Chat</title>
+    <meta charset="UTF-8">
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			background-color: #addbf7;
+		}
+		#timetable{
+			border: 1px solid gray;
+			border-radius: 5px;
+			padding: 5px 20px 5px 20px;
+			background-color: #ffffff;
+		}
+		.timeline{
+			margin: 5px;
+		}
+		.dayslot{
+			font-weight: bold;
+			justify-content: center;
+		}
+		.timeslot{
+			height: 40px;
+			border-top: 1px solid gray;
+			border-left: 1px solid gray;
+			border-right: 1px solid gray;
+			background-color: white;
+		}
+		.timeslot-last{
+			border-bottom: 1px solid gray;
+		}
+		#chat{
+			height: 300px;
+			border: 1px solid gray;
+			padding: 0!important;
+			background-color: white;
+		}
+		#chatMessages{
+			height: 235px;
+			padding: 2px;
+			box-sizing: border-box;
+		}
+		#chatInput{
+			width: 100%;
+			height: 25px;
+		}
+		#chatTitle{
+			font-weight: bold;
+			font-size: x-large;
+			text-align: center;
+		}
+		.chatName{
+			color: #008fdb;
+		}
+		.chatMsg{
+
+		}
+		#page-bottom{
+			margin-top: 40px;
+		}
+		#page-bottomRight{
+			text-align: center;
+		}
+		#faqLink{
+			float: right;
+		}
+		#languages{
+			float: left;
+			border: 1px solid gray;
+		}
+		.languageEntry{
+			padding: 0!important;
+		}
+		.languageEntry:hover{
+			cursor: pointer;
+		}
+		.container{
+			margin-top: 50px;
+		}
+		#redLine{
+			height: 2px;
+			width: 100%;
+			position: absolute;
+			background-color: red;
+			left: 0px;
+			top: 23px;
+		}
+		#logout{
+			text-align: right;
+			margin-bottom: 10px;
+		}
+		#contactLink{
+			font-size: 14pt;
+		}
+	</style>
+</head>
+<body>
+    <div class="container">
+    	<div class="row">
+				<div class="col-7" id="timetable">
+					<div class="row">
+						<div class="col timeline" id="montag">
+							<div class="row dayslot" id="day0">Montag</div>
+							<div class="row timeslot">10:00</div>
+							<div class="row timeslot">11:00</div>
+							<div class="row timeslot">12:00</div>
+							<div class="row timeslot">13:00</div>
+							<div class="row timeslot">14:00</div>
+							<div class="row timeslot">15:00</div>
+							<div class="row timeslot timeslot-last">16:00</div>
+						</div>
+						<div class="col timeline" id="dienstag">
+							<div class="row dayslot" id="day1">Dienstag</div>
+							<div class="row timeslot">10:00</div>
+							<div class="row timeslot">11:00</div>
+							<div class="row timeslot">12:00</div>
+							<div class="row timeslot">13:00</div>
+							<div class="row timeslot">14:00</div>
+							<div class="row timeslot">15:00</div>
+							<div class="row timeslot timeslot-last">16:00</div>
+						</div>
+						<div class="col timeline" id="mittwoch">
+							<div class="row dayslot" id="day2">Mittwoch</div>
+							<div class="row timeslot">10:00</div>
+							<div class="row timeslot">11:00</div>
+							<div class="row timeslot">12:00</div>
+							<div class="row timeslot">13:00</div>
+							<div class="row timeslot">14:00</div>
+							<div class="row timeslot">15:00</div>
+							<div class="row timeslot timeslot-last">16:00</div>
+						</div>
+						<div class="col timeline" id="donnerstag">
+							<div class="row dayslot" id="day3">Donnerstag</div>
+							<div class="row timeslot">10:00</div>
+							<div class="row timeslot">11:00</div>
+							<div class="row timeslot">12:00</div>
+							<div class="row timeslot">13:00</div>
+							<div class="row timeslot">14:00</div>
+							<div class="row timeslot">15:00</div>
+							<div class="row timeslot timeslot-last">16:00</div>
+						</div>
+						<div class="col timeline" id="freitag">
+							<div class="row dayslot" id="day4">Freitag</div>
+							<div class="row timeslot">10:00</div>
+							<div class="row timeslot">11:00</div>
+							<div class="row timeslot">12:00</div>
+							<div class="row timeslot">13:00</div>
+							<div class="row timeslot">14:00</div>
+							<div class="row timeslot">15:00</div>
+							<div class="row timeslot timeslot-last">16:00</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-1"></div>
+				<div class="col-4">
+					<div id="logout">
+						<button class="btn btn-secondary" id="logout_btn" onclick="window.location.href = 'login.html';">Abmelden ◯</button>
+					</div>
+					<div class="p-2" id="chat">
+						<div id="chatMessages"></div>
+						<input id="chatInput" type="" name="">
+						<div id="chatTitle">Globaler Chat</div>
+					</div>
+				</div>
+			</div>
+		
+		
+			
+		
+		<div id="page-bottom" class="row">
+			<div class="col-7">
+				<button id="faqLink" type="button" class="btn btn-info" onclick="switchfaq()">FAQ</button>
+				<div class="row" id="languages">
+					<div class="col languageEntry" id="l_ger" onclick="setGer();" class="languageEntry"><img height="50px" src="./resc/germanflag.png"></div>
+					<div class="col languageEntry" id="l_eng" onclick="setEng();" class="languageEntry"><img height="50px" src="./resc/britishflag.png"></div>
+				</div>
+			</div>
+			<div class="col-1"></div>
+			<div class="col-4" id="page-bottomRight">
+				<button id="enqueueButton" type="button" class="btn btn-primary btn-lg" onclick="enqueue()"></button>
+				<p id="leaveQueueInfo"></p>
+				<p id="queueInfo"></p>
+			</div>
+		</div>
+		<div class="row" id="contactLink">
+			<p>
+				Falls du Probleme hast kontaktiere uns <a href="./contact.html" id="contactLink">hier</a>.
+			</p>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var lang = "GER";
+		
+		var inqueue = false;
+		var userName = "User Name";
+		var persons = 1;
+		var enqueueT, dequeueT, info, personsLeft, timeLeft;
+        var faqswitch = false;
+        var faqtext = "FAQ";
+		function queue_lang(language) {
+			if(language == "GER")
+			{
+				enqueueT = "In Warteschlange einreihen";
+				dequeueT = "In der Warteschlange...";
+				info = "Erneut klicken zum verlassen."
+				personsLeft = "verbleibend";
+				timeLeft = "ca.";
+
+				document.getElementById("enqueueButton").innerHTML = enqueueT;
+			} else {
+				enqueueT = "Enqueue for Tutor";
+				dequeueT = "In queue...";
+				info = "Click again to leave."
+				personsLeft = "remaining";
+				timeLeft = "approx.";
+
+				document.getElementById("enqueueButton").innerHTML = enqueueT;
+			}
+		}
+		queue_lang(lang);
+
+        function switchfaq()
+        {
+            if(faqswitch == false)
+            {
+                document.getElementById("timetable").innerHTML = " <div class='col-sm'>                <h style='font-weight: bold; font-size: normal;'>FAQ</h>                <div                    style='background-color: white; overflow-y: scroll; border:1px; border-style:solid; height: 300px; border-color:grey; padding: 1%;'>                    <p style=' font-weight: bold;' id='question1'>Was bedeutet System.out.printf in Java?</p>                    <p style=' font-style: italic;' id='answer1'>Es handelt sich um die Ausgabe von formatiertem Text auf der Konsole</p>                    <p style=' font-weight: bold;' id='question2'>Wie implementiert man eine For-Schleife in Java?</p>                    <p style=' font-style: italic;' id='answer2'>Mit drei Parametern in Klammern: for (int i = 0; i < j; i++). i ist hierbei die Variable, die hochgezählt (und am Anfang auf 0 gesetzt) wird bis j erreicht wird. i++ gibt an, dass in Einerschritten hochgezählt wird, kann aber beliebig variiert werden.</p>                    <p style=' font-weight: bold;' id=question3>Was sind andere Fragen, die in ein FAQ noch rein könnten?</p>                    <p style=' font-style: italic;' id='answer3'>Da ich unkreativ bin und mir relativ wenig sinnvolle Fragen inklusive Antworten noch einfallen (ich außerdem eigentlich auch besseres zu tun habe), ich aber schon zeigen möchte, dass dieses Fenster hier scrollbar ist, schreibe ich jetzt einfach einen Text mit doch ganz schön vielen Zeichen, sodass irgendwann endlich mal das untere Ende dieser Box erreicht wird und somit tatsächlich klar wird: Diese Box ist scrollbar, wenn der Text darin mehr wird, als tatsächlich in die Box hereinpasst.</p>                </div>            </div> ";
+                faqswitch = true;
+                setLang(lang);
+            } else 
+            { 
+                document.getElementById("timetable").innerHTML = "<div class='row'> <div class='col timeline' id='montag'> <div class='row dayslot' id='day0'>Montag</div> <div class='row timeslot'>10:00</div><div class='row timeslot'>11:00</div><div class='row timeslot'>12:00</div><div class='row timeslot'>13:00</div><div class='row timeslot'>14:00</div><div class='row timeslot'>15:00</div><div class='row timeslot timeslot-last'>16:00</div></div><div class='col timeline' id='dienstag'><div class='row dayslot' id='day1'>Dienstag</div><div class='row timeslot'>10:00</div><div class='row timeslot'>11:00</div><div class='row timeslot'>12:00</div><div class='row timeslot'>13:00</div><div class='row timeslot'>14:00</div><div class='row timeslot'>15:00</div><div class='row timeslot timeslot-last'>16:00</div></div><div class='col timeline' id='mittwoch'><div class='row dayslot' id='day2'>Mittwoch</div><div class='row timeslot'>10:00</div><div class='row timeslot'>11:00</div><div class='row timeslot'>12:00</div><div class='row timeslot'>13:00</div><div class='row timeslot'>14:00</div><div class='row timeslot'>15:00</div><div class='row timeslot timeslot-last'>16:00</div></div><div class='col timeline' id='donnerstag'><div class='row dayslot' id='day3'>Donnerstag</div><div class='row timeslot'>10:00</div><div class='row timeslot'>11:00</div><div class='row timeslot'>12:00</div><div class='row timeslot'>13:00</div><div class='row timeslot'>14:00</div><div class='row timeslot'>15:00</div><div class='row timeslot timeslot-last'>16:00</div></div><div class='col timeline' id='freitag'><div class='row dayslot' id='day4'>Freitag</div><div class='row timeslot'>10:00</div><div class='row timeslot'>11:00</div><div class='row timeslot'>12:00</div><div class='row timeslot'>13:00</div><div class='row timeslot'>14:00</div><div class='row timeslot'>15:00</div><div class='row timeslot timeslot-last'>16:00</div></div></div>";
+                faqswitch = false;
+                setexamplelessons();
+                var line = document.createElement("div");
+                line.id = "redLine";
+                document.getElementById("freitag").append(line);
+                setLine();
+                setLang(lang);
+                
+            }
+        }
+	
+        
+		/**
+		*	chat message
+		*/
+		document.getElementById("chatInput").addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				addMessage(userName, document.getElementById("chatInput").value);
+				document.getElementById("chatInput").value = "";
+			}
+		});
+
+		var line = document.createElement("div");
+		line.id = "redLine";
+		document.getElementById("freitag").append(line);
+		setLine();
+
+		function setLine(){
+			var x = document.getElementById("redLine");
+			var d = new Date();
+  			var n = d.getDay();
+  			var h = d.getHours();
+  			var m = d.getMinutes();
+
+  			switch(n){
+  				case 1:
+  					document.getElementById("redLine").style.display = "block";
+  					document.getElementById("montag").append(x);
+  					break;
+  				case 2:
+  					document.getElementById("redLine").style.display = "block";
+  					document.getElementById("dienstag").append(x);
+  					break;
+  				case 3:
+  					document.getElementById("redLine").style.display = "block";
+  					document.getElementById("mittwoch").append(x);
+  					break;
+  				case 4:
+  					document.getElementById("redLine").style.display = "block";
+  					document.getElementById("donnerstag").append(x);
+  					break;
+  				case 5:
+  					document.getElementById("redLine").style.display = "block";
+  					document.getElementById("freitag").append(x);
+  					break;
+  				default:
+  					document.getElementById("redLine").style.display = "none";
+  					return;
+  					break;
+  			}
+  			
+  			if(h >= 17 || h < 10){
+				document.getElementById("redLine").style.display = "none";
+  			}else{
+  				document.getElementById("redLine").style.display = "block";
+  				var lineHeight = 23 + (h-10)*40 + m * 0.67;
+				document.getElementById("redLine").style.top = lineHeight.toString() + "px";
+  			}
+		}
+
+		window.setInterval(function(){
+		  	setLine();
+		}, 30000);
+		
+		function addLesson(day, startHour, startMinute, duration){
+			var item = document.createElement("div");
+			switch(day){
+  				case "montag":
+  					document.getElementById("montag").append(item);
+  					break;
+  				case "dienstag":
+  					document.getElementById("dienstag").append(item);
+  					break;
+  				case "mittwoch":
+  					document.getElementById("mittwoch").append(item);
+  					break;
+  				case "donnerstag":
+  					document.getElementById("donnerstag").append(item);
+  					break;
+  				case "freitag":
+  					document.getElementById("freitag").append(item);
+  					break;
+  				default:
+  					return;
+  					break;
+  			}
+
+			var time = 0.667 * duration;
+			item.style.height = time.toString() + "px";
+			var height = 24 + (startHour-10)*40 + startMinute * 0.67;
+			item.style.top = height.toString() + "px";
+			item.style.width = "100%";
+			item.style.backgroundColor = "blue";
+			item.style.position = "absolute";
+			item.style.left = "0px";
+			item.style.opacity = "0.5";
+		}
+
+		//Beispiel lessons
+		function setexamplelessons()
+        {
+            addLesson("montag", 11, 0, 60);
+            addLesson("dienstag", 12, 0, 60);
+            addLesson("mittwoch", 11, 0, 90);
+            addLesson("donnerstag", 13, 0, 45);
+            addLesson("freitag", 13, 0, 90);
+            addLesson("mittwoch", 15, 0, 60);
+            addLesson("freitag", 10, 0, 60);
+        }
+        setexamplelessons();
+		
+		function enqueue(){
+			if(!inqueue){
+				inqueue = true;
+				document.getElementById("enqueueButton").classList.remove("btn-primary");
+				document.getElementById("enqueueButton").classList.add("btn-secondary");
+				document.getElementById("enqueueButton").innerHTML = dequeueT;
+				document.getElementById("leaveQueueInfo").innerHTML = info;
+				document.getElementById("queueInfo").innerHTML = persons + " " + personsLeft + "<br>" + timeLeft + " " + (persons * 5) + "min" ;
+				toChat();
+				
+			}else{
+				inqueue = false;
+				document.getElementById("enqueueButton").classList.remove("btn-secondary");
+				document.getElementById("enqueueButton").classList.add("btn-primary");
+				document.getElementById("enqueueButton").innerHTML = enqueueT;
+				document.getElementById("leaveQueueInfo").innerHTML = "";
+				document.getElementById("queueInfo").innerHTML = "";
+			}
+		}
+		
+		function toChat(){
+			setTimeout(function(){
+				if(inqueue){
+					window.location.href = 'live.html';
+				}
+			}, 5000);
+		}
+
+		function addMessage(sender, message){
+			var element = document.createElement("div");
+			element.innerHTML = "<span class='chatName'> " + sender + " </span>: <span class='chatMsg'>" + message + "</span>";
+			document.getElementById("chatMessages").append(element);
+		}
+		// --------- language settings
+		var logout_GER = "Abmelden ◯";
+		var logout_ENG = "Logout ◯";
+
+		var days_GER = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag"];
+		var days_ENG = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+		
+
+
+		function setGer() {
+			lang = "GER";
+			queue_lang(lang);
+
+			document.getElementById("logout_btn").textContent=logout_GER;
+            if (faqswitch == false) 
+            {
+                document.getElementById("faqLink").textContent = "FAQ";
+                for(i = 0; i < 5; i++) {
+                    var day = "day" + i;
+                    document.getElementById(day).textContent = days_GER[i];
+                }
+            } else {
+                document.getElementById("faqLink").textContent = "Stundenplan";
+                document.getElementById("question1").textContent = "Was bedeutet System.out.printf in Java?";
+                document.getElementById("question2").textContent = "Wie implementiert man eine For-Schleife in Java?";
+                document.getElementById("question3").textContent = "Was sind andere Fragen, die in ein FAQ noch rein könnten?";
+                document.getElementById("answer1").textContent = "Es handelt sich um die Ausgabe von formatiertem Text auf der Konsole.";
+                document.getElementById("answer2").textContent = "Mit drei Parametern in Klammern: for (int i = 0; i < j; i++). i ist hierbei die Variable, die hochgezählt (und am Anfang auf 0 gesetzt) wird bis j erreicht wird. i++ gibt an, dass in Einerschritten hochgezählt wird, kann aber beliebig variiert werden."
+                document.getElementById("answer3").textContent = "Da ich unkreativ bin und mir relativ wenig sinnvolle Fragen inklusive Antworten noch einfallen (ich außerdem eigentlich auch besseres zu tun habe), ich aber schon zeigen möchte, dass dieses Fenster hier scrollbar ist, schreibe ich jetzt einfach einen Text mit doch ganz schön vielen Zeichen, sodass irgendwann endlich mal das untere Ende dieser Box erreicht wird und somit tatsächlich klar wird: Diese Box ist scrollbar, wenn der Text darin mehr wird, als tatsächlich in die Box hereinpasst."
+
+            }
+			document.getElementById("chatTitle").innerHTML = "Globaler Chat";
+			document.getElementById("contactLink").innerHTML = "<p>Falls du Probleme hast kontaktiere uns <a href='./contact.html' id='contactLink'>hier</a>.</p>";
+			
+			
+		}
+
+		function setEng() {
+			lang = "ENG";
+			queue_lang(lang);
+
+			document.getElementById("logout_btn").textContent=logout_ENG;
+			
+            if(faqswitch == false)
+            {
+                document.getElementById("faqLink").textContent = "FAQ";
+                for(i = 0; i < 5; i++) {
+                    var day = "day" + i;
+                    document.getElementById(day).textContent = days_ENG[i];
+
+                }
+            } else {
+                document.getElementById("faqLink").textContent = "Timetable";
+                document.getElementById("question1").textContent = "What does System.out.printf mean in Java?";
+                document.getElementById("question2").textContent = "How to implement a for loop in Java?";
+                document.getElementById("question3").textContent = "What are other questions for a FAQ?";
+                document.getElementById("answer1").textContent = "It is the output of formated text on the console.";
+                document.getElementById("answer2").textContent = "With three parameters in brackets: for (int i = 0; i <j; i ++). i is the variable that is incremented (and initially set to 0 here) until j is reached. i ++ indicates that increments are made in steps of one. These steps can be varied.."
+                document.getElementById("answer3").textContent = "Since I am not creative and don't have meaningful questions and answers left (I also actually have better things to do), but would like to show that this window can be scrolled here, I will now simply write a text with quite a few more words, so that at some point the lower end of this box is finally reached and thus actually becomes clear: This box is scrollable if the text in it becomes bigger than the maximum that fits into the box."
+
+            }
+			
+			document.getElementById("contactLink").innerHTML = "<p>If there is a problem with the site, you can reach us <a href='./contact.html' id='contactLink'>here</a>.</p>";
+			
+			document.getElementById("chatTitle").innerHTML = "Global Chat";
+            
+		}
+
+        function setLang(lang)
+        {
+            if(lang == "GER")
+            {
+                setGer();
+            }
+            if(lang == "ENG")
+            {
+                setEng();
+            }
+        }
+	</script>
+
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
