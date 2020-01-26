@@ -1,3 +1,68 @@
-.inputField{
-    
+* {box-sizing: border-box;}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	.overflow: scroll;
+	border: #101010;
+}
+
+.sendBar{
+	width: 100%;
+	float: left;
+}
+
+.sendField{
+	width: 80%;
+	float: left;
+}
+
+.sendBtt{
+	width: 20%;
+	float: right;
+	text-align: center;
+	display: inline-block;
+}
+
+.msgArea{
+	width: 100%;
+	float: left;
+}
+
+.msg{
+	width: 90%;
+	border: #101010;
+	border-radius: 15px;
+	
+}
+
+.yourMsg{
+	float: right;
+	background: #ccffcc;
+}
+
+.otherMsg{
+	float: left;
+	background: #ccccff;
+}
+
+.msgSender{
+	
+}
+
+.msgText{
+	
+}
+
+@media screen and (max-width: 400px) {
+	.sendField {
+		width: 100%;
+	}
+	.sendBtt{
+		width: 100%
+	}
+	.msg{
+		width: 100%;
+	}
 }
