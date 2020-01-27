@@ -30,7 +30,6 @@ function update() {
 // request updates at a fixed interval (ms)
 var intervalID = setInterval(update, 1000);
 
-
 var dbname = "gmci";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
