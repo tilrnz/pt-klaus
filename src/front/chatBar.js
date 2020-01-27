@@ -67,9 +67,17 @@ function addMsg(response) {
 	put(response, {"value": messages} );
 }
 
+document.getElementById('sendField').addEventListener("keydown", function(event) {
+	if (event.keyCode === 13) {
+		event.preventDefault();
+	}
+});
+
 document.getElementById('sendField').addEventListener("keyup", function(event) {
 	if (event.keyCode === 13) {
 		event.preventDefault();
-		set('chat');
+		if(document.getElementById('sendField').value != ''){
+			set('chat');
+		}
 	}
 });

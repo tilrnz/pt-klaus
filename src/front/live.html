@@ -83,31 +83,31 @@
                 <button type="submit" class="btn btn-secondary" onclick="window.location.href = 'mainpage.html';"
                     style="float: right; ">disconnect ◯</button>
             </div>
-            <div class="container" style="margin-top: 20px;">
+            <div class="container-fluid" style="padding: 30px; margin-top: 20px;">
                 <div class="row">
-                    <div class="col-sm" style="width: 100%;">
+                    <div class="col-md-7" style="width: 100%;">
                         
-                           <Textarea  placeholder="Paste your Code here..." style="width: 100%;background-color: white; overflow-y:scroll;overflow-x: scroll; height: 400px; border:1px; border-style:solid; border-color:grey; padding: 1%; rows="20" cols="42"></Textarea>
+                           <Textarea  placeholder="Paste your Code here..." style="width: 100%;background-color: white; overflow-y:scroll;overflow-x: scroll; height: 600px; border:1px; border-style:solid; border-color:grey; padding: 1%; rows="20" cols="42"></Textarea>
                            <p>
                                Terminal
                            </p>
-                           <textarea rows = 5 cols="42" wrap="soft" style="; width: 100%; height: 90px;color: #ffffff ;background-color: #050505;"> C:\users\tut ></textarea>
+                           <textarea rows = 5 cols="42" wrap="soft" style="; width: 100%; height: 120px;color: #ffffff ;background-color: #050505;"> C:\users\tut ></textarea>
                     </div>
-                    <div class="col-sm" style="width: 60%;">
-                        <div class="p-2" id="chat">
-                            <div id="chatMessages"></div>
-                            <input id="chatInput" type="" name="">
-                            <div id="chatTitle">Chat</div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4" >
+                    <div class="p-2" id="chat" style="height: 700px;">
+                        <iframe style="border: none; height: 92%; width: 100%;" src="chatMsgs.html"></iframe>
+                        <iframe style="border: none; height: 8%; width: 100%;" src="chatBar.html"></iframe>
                         </div>
 						
 						<img id="muteBtt" align="middle" class="mutedeafbtn" src="./resc/micoff.png" style="margin-top: 70px;" onclick="changeMute()"/>
-                        <img id="deafBtt" align="middle" src="./resc/deaf.png" class="mutedeafbtn" style="margin-top: 70px;" onclick="changeMic()"/>
+                        <img id="deafBtt" align="middle" src="./resc/undeaf.png" class="mutedeafbtn" style="margin-top: 70px;" onclick="changeMic()"/>
                     </div>
                 </div>
             </div>
             
         <script type="text/javascript">
-			var mute = true, mic = true;
+			var mute = true, mic = false;
 			function changeMute(){
 				if(mute){
 					document.getElementById("muteBtt").src = "./resc/micon.png";
