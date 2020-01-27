@@ -49,7 +49,14 @@
         var inputPassword = document.getElementById("exampleInputPassword").value;
         if(inputWebSSO && inputPassword)
         {
-          window.location.href = 'mainpage.html'
+          if(inputWebSSO === "Tutor")
+          {
+            window.location.href = 'mainpageTutor.html';
+          }else
+          {
+            window.location.href = 'mainpage.html'
+          }
+          
         }
         else
         {
