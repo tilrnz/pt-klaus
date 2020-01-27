@@ -100,9 +100,9 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 	</style>
 </head>
 <body>
-    <div class="container">
-    	<div class="row">
-				<div class="col-7" id="timetable">
+    <div class="container-fluid" style="padding: 30px;" > 
+    	<div class="row" >
+				<div class="col-md-8" id="timetable">
 					<div class="row">
 						<div class="col timeline" id="montag">
 							<div class="row dayslot" id="day0">Montag</div>
@@ -156,15 +156,16 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 						</div>
 					</div>
 				</div>
-				<div class="col-1"></div>
-				<div class="col-4">
+				<div class="col-md-1"></div>
+				<div class="col-md-3">
 					<div id="logout">
 						<button class="btn btn-secondary" id="logout_btn" onclick="window.location.href = 'login.html';">Abmelden ◯</button>
 					</div>
-					<div class="p-2" id="chat">
-						<div id="chatMessages"></div>
-						<input id="chatInput" type="" name="">
-						<div id="chatTitle">Globaler Chat</div>
+					<div id="chat" style="height: 600px;">
+					
+						<iframe style="border: none; height: 80%; width: 100%;" src="chatMsgs.html"></iframe>
+						<iframe style="border: none; height: 20%; width: 100%;" src="chatBar.html"></iframe>
+					
 					</div>
 				</div>
 			</div>
@@ -246,17 +247,6 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
             }
         }
 	
-        
-		/**
-		*	chat message
-		*/
-		document.getElementById("chatInput").addEventListener("keyup", function(event) {
-			if (event.keyCode === 13) {
-				event.preventDefault();
-				addMessage(userName, document.getElementById("chatInput").value);
-				document.getElementById("chatInput").value = "";
-			}
-		});
 
 		var line = document.createElement("div");
 		line.id = "redLine";
@@ -385,11 +375,6 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 			}, 5000);
 		}
 
-		function addMessage(sender, message){
-			var element = document.createElement("div");
-			element.innerHTML = "<span class='chatName'> " + sender + " </span>: <span class='chatMsg'>" + message + "</span>";
-			document.getElementById("chatMessages").append(element);
-		}
 		// --------- language settings
 		var logout_GER = "Abmelden ◯";
 		var logout_ENG = "Logout ◯";
@@ -421,7 +406,6 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
                 document.getElementById("answer3").textContent = "Da ich unkreativ bin und mir relativ wenig sinnvolle Fragen inklusive Antworten noch einfallen (ich außerdem eigentlich auch besseres zu tun habe), ich aber schon zeigen möchte, dass dieses Fenster hier scrollbar ist, schreibe ich jetzt einfach einen Text mit doch ganz schön vielen Zeichen, sodass irgendwann endlich mal das untere Ende dieser Box erreicht wird und somit tatsächlich klar wird: Diese Box ist scrollbar, wenn der Text darin mehr wird, als tatsächlich in die Box hereinpasst."
 
             }
-			document.getElementById("chatTitle").innerHTML = "Globaler Chat";
 			document.getElementById("contactLink").innerHTML = "<p>Falls du Probleme hast kontaktiere uns <a href='./contact.html' id='contactLink'>hier</a>.</p>";
 			
 			

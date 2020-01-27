@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" href="../style/chat.css">
+<title>ChatBar</title>
+</head>
+<body>
+<!--The input field-->
+<div class="sendBar">
+	<form>
+	<input type="text" class="sendField" id="sendField" placeholder="Your Message...">
+	<input type="button" class="sendBtt" onclick="if(document.getElementById('sendField').value != ''){set('chat');}" value="Send">
+	</form>
+</div>
+
+<script src="chatBar.js"></script>
+</body>
+</html>
