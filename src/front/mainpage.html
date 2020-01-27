@@ -100,9 +100,9 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 	</style>
 </head>
 <body>
-    <div class="container">
-    	<div class="row">
-				<div class="col-7" id="timetable">
+    <div class="container-fluid" style="padding: 30px;" > 
+    	<div class="row" >
+				<div class="col-md-8" id="timetable">
 					<div class="row">
 						<div class="col timeline" id="montag">
 							<div class="row dayslot" id="day0">Montag</div>
@@ -156,12 +156,12 @@ Has Calender view, Chat, Enqueue, Language change and FAQ and logout buttons.-->
 						</div>
 					</div>
 				</div>
-				<div class="col-1"></div>
-				<div class="col-4">
+				<div class="col-md-1"></div>
+				<div class="col-md-3">
 					<div id="logout">
 						<button class="btn btn-secondary" id="logout_btn" onclick="window.location.href = 'login.html';">Abmelden ◯</button>
 					</div>
-					<div id="chat">
+					<div id="chat" style="height: 600px;">
 					
 						<iframe style="border: none; height: 80%; width: 100%;" src="chatMsgs.html"></iframe>
 						<iframe style="border: none; height: 20%; width: 100%;" src="chatBar.html"></iframe>
